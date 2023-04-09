@@ -22,4 +22,19 @@ public class StudentController {
     public Student getStudentById(@PathVariable(name = "id") Long id) {
         return studentService.getStudent(id);
     }
+
+    @DeleteMapping("/products")
+    public void purgeProduct(@RequestParam Long id) {
+        studentService.delStudent(id);
+    }
+
+    @GetMapping("/studentMark")
+    public long getStudentMark(@RequestParam Long id) {
+        return studentService.getStudentMark(id);
+    }
+
+    @PostMapping("/studentMark")
+    public void changeStudentMark(@RequestParam Long id, @RequestParam int mark) {
+        studentService.setMarkById(id, mark);
+    }
 }

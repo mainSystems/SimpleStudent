@@ -31,6 +31,10 @@ public class StudentRepository {
         return studentRepositoryDao.findAgeById(id);
     }
 
+    public int getStudentMark(Long id) {
+        return studentRepositoryDao.findMarkById(id);
+    }
+
     public void setMarkById(Long id, int mark) {
         studentRepositoryDao.updateMarkById(id, mark);
     }

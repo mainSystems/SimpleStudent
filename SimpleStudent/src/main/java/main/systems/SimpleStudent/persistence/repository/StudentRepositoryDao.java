@@ -20,6 +20,9 @@ public interface StudentRepositoryDao extends JpaRepository<Student, Long> {
     @Query(nativeQuery = true, value = "select age from students where id = :id")
     int findAgeById(Long id);
 
+    @Query(nativeQuery = true, value = "select mark from students where id = :id")
+    int findMarkById(Long id);
+
     @Modifying
     @Transactional
     @Query(nativeQuery = true, value = "update students set mark = :mark where id = :id")

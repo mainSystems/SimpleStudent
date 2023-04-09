@@ -37,6 +37,11 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
+    public int getStudentMark(Long id) {
+        return studentRepository.getStudentMark(id);
+    }
+
+    @Override
     public void setMarkById(Long id, int mark) {
         studentRepository.setMarkById(id, mark);
     }
