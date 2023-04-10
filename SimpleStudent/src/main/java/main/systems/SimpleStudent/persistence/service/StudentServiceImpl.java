@@ -47,6 +47,12 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
+    public void updateMarkById(Long id, int mark) {
+        int studentMark = studentRepository.getStudentMark(id);
+        studentRepository.setMarkById(id, studentMark + mark);
+    }
+
+    @Override
     public void setNameById(Long id, String name) {
         studentRepository.setNameById(id, name);
     }
@@ -55,4 +61,11 @@ public class StudentServiceImpl implements StudentService{
     public void setAgeById(Long id, int age) {
         studentRepository.setAgeById(id, age);
     }
+
+    @Override
+    public void addStudent(String name, int age) {
+        studentRepository.addStudent(name, age);
+    }
+
+
 }

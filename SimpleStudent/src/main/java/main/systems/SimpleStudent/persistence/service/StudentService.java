@@ -12,6 +12,8 @@ public interface StudentService {
     int getStudentAge(Long id);
     int getStudentMark(Long id);
     void setMarkById(Long id, int mark);
+    void updateMarkById(Long id, int mark);
     void setNameById(Long id, String name);
     void setAgeById(Long id, int age);
+    void addStudent(String name, int age);
 }

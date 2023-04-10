@@ -12,12 +12,19 @@ angular.module('appStudies', ['ngStorage'])
         });
     };
 
-    $scope.newCart = function() {
-        $http.get(contextPath + '/new_cart')
-        .then(function (response){
+    $scope.addStudent = function(name, age) {
+        $http({
+            url: contextPath + '/student',
+            method: 'POST',
+            params: {
+                name: name,
+                age: age
+            }
+        }).then(function(response) {
+            console.log(response);
             $scope.loadStudents();
         });
-    };
+    }
 
     $scope.changeStudentMark = function(id, mark) {
         $http({
@@ -33,12 +40,12 @@ angular.module('appStudies', ['ngStorage'])
         });
     }
 
-    $scope.purgeProduct = function(productId) {
+    $scope.delStudent = function(id) {
             $http({
-                url: contextPath + '/products',
+                url: contextPath + '/student',
                 method: 'DELETE',
                 params: {
-                    productId: productId
+                    id: id
                 }
             }).then(function(response) {
                 $scope.loadStudents();

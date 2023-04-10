@@ -23,8 +23,8 @@ public class StudentController {
         return studentService.getStudent(id);
     }
 
-    @DeleteMapping("/products")
-    public void purgeProduct(@RequestParam Long id) {
+    @DeleteMapping("/student")
+    public void delStudent(@RequestParam Long id) {
         studentService.delStudent(id);
     }
 
@@ -35,6 +35,11 @@ public class StudentController {
 
     @PostMapping("/studentMark")
     public void changeStudentMark(@RequestParam Long id, @RequestParam int mark) {
-        studentService.setMarkById(id, mark);
+        studentService.updateMarkById(id, mark);
+    }
+
+    @PostMapping("/student")
+    public void addStudent(@RequestParam String name, @RequestParam(required = false, defaultValue = "0") int age) {
+        studentService.addStudent(name, age);
     }
 }

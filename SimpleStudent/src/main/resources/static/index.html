@@ -6,18 +6,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
     <script src="index.js"></script>
     <title>Studies</title>
 </head>
 <body>
 <div class="containerStudents" align="center" ng-controller="indexController">
     <h3>Students List</h3>
-
-    <div>
-        <button class="btn btn-primary btn-sm mb-3" ng-click="newCart()">Create New cart</button>
-    </div>
-
 
     <table class="containerStudents">
         <thead>
@@ -26,6 +21,7 @@
             <th>Name</th>
             <th>Mark</th>
             <th>Age</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -41,11 +37,25 @@
             <td>{{student.age}}</td>
 
             <td>
-                <button class="btn btn-outline-info" ng-click="purgeProduct(product.id)">Delete</button>
+                <button class="btn btn-outline-info" ng-click="delStudent(student.id)">Delete</button>
             </td>
         </tr>
         </tbody>
     </table>
+
+    <form novalidate ng-submit="addStudent(student.name, student.age)">
+        <p></p>
+        <h6>Add student</h6>
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="" ng-model="student.name">
+
+            <label for="age">Age</label>
+            <input type="number" min="0" oninput="validity.valid||(value='');" id="age" placeholder="" ng-model="student.age">
+
+            <button type="submit">Apply</button>
+        </div>
+    </form>
 </div>
 </body>
 </html>

@@ -3,6 +3,7 @@ package main.systems.SimpleStudent.persistence.repository;
 import lombok.RequiredArgsConstructor;
 import main.systems.SimpleStudent.persistence.entity.Student;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -45,5 +46,13 @@ public class StudentRepository {
 
     public void setAgeById(Long id, int age) {
         studentRepositoryDao.updateAgeById(id, age);
+    }
+
+    @Transactional
+    public void addStudent(String name, int age) {
+        Student newStudent = new Student();
+        newStudent.setName(name);
+        newStudent.setAge(age);
+        studentRepositoryDao.save(newStudent);
     }
 }
