@@ -11,8 +11,8 @@ import java.util.List;
 
 @Repository
 public interface StudentRepositoryDao extends JpaRepository<Student, Long> {
-//    @Query(value = "select s.id from Student s where s.id = :id")
-//    Student findStudentById(Long id);
+    @Query(value = "select s.id from Student s where s.id = :id")
+    Student findStudentById(Long id);
 
     @Query(nativeQuery = true, value = "select name from students where id = :id")
     String findNameById(Long id);
