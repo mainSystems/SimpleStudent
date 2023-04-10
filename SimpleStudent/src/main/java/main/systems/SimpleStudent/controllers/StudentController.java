@@ -2,6 +2,7 @@ package main.systems.SimpleStudent.controllers;
 
 import lombok.RequiredArgsConstructor;
 import main.systems.SimpleStudent.persistence.entity.Student;
+import main.systems.SimpleStudent.persistence.entity.dto.StudentDto;
 import main.systems.SimpleStudent.persistence.service.StudentServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,13 +15,13 @@ public class StudentController {
     private final StudentServiceImpl studentService;
 
     @GetMapping("/mainPage")
-    public List<Student> getStudents() {
-        return studentService.getAllStudents();
+    public List<StudentDto> getStudents() {
+        return studentService.getAllStudents().stream().map(student -> new StudentDto(student)).toList();
     }
 
     @GetMapping("/student/{id}")
-    public Student getStudentById(@PathVariable(name = "id") Long id) {
-        return studentService.getStudent(id);
+    public StudentDto getStudentById(@PathVariable(name = "id") Long id) {
+        return new StudentDto(studentService.getStudent(id));
     }
 
     @DeleteMapping("/student")

@@ -9,13 +9,14 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class StudentServiceImpl implements StudentService{
+public class StudentServiceImpl implements StudentService {
     private final StudentRepository studentRepository;
 
     @Override
     public List<Student> getAllStudents() {
         return studentRepository.getAllStudents();
     }
+
     @Override
     public Student getStudent(Long id) {
         return studentRepository.getStudent(id);
